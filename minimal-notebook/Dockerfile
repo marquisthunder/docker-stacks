@@ -69,16 +69,16 @@ RUN mkdir /home/$NB_USER/work && \
 # Install conda as creditx
 RUN cd /tmp && \
     mkdir -p $CONDA_DIR && \
-    wget --quiet https://repo.continuum.io/miniconda/Miniconda3-3.19.0-Linux-x86_64.sh && \
-    echo "9ea57c0fdf481acf89d816184f969b04bc44dea27b258c4e86b1e3a25ff26aa0 *Miniconda3-3.19.0-Linux-x86_64.sh" | sha256sum -c - && \
-    /bin/bash Miniconda3-3.19.0-Linux-x86_64.sh -f -b -p $CONDA_DIR && \
-    rm Miniconda3-3.19.0-Linux-x86_64.sh && \
-    $CONDA_DIR/bin/conda install --quiet --yes conda==3.19.1 && \
+    wget --quiet https://repo.continuum.io/miniconda/Miniconda3-4.0.5-Linux-x86_64.sh && \
+    echo "42dac45eee5e58f05f37399adda45e85 *Miniconda3-4.0.5-Linux-x86_64.sh" | md5sum -c - && \
+    /bin/bash Miniconda3-4.0.5-Linux-x86_64.sh -f -b -p $CONDA_DIR && \
+    rm Miniconda3-4.0.5-Linux-x86_64.sh && \
+    $CONDA_DIR/bin/conda install --quiet --yes conda==4.0.5 && \
     conda clean -tipsy
 
 # Install Jupyter notebook as creditx
 RUN conda install --quiet --yes \
-    'notebook=4.1*' \
+    'notebook=4.2*' \
     terminado \
     && conda clean -tipsy
 
