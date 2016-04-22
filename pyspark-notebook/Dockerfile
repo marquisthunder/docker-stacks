@@ -68,7 +68,7 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
     'seaborn=0.7*' \
     'scikit-learn=0.17*' \
     pyzmq
-RUN $CONDA_ACTIVATE && conda install -c https://conda.anaconda.org/creditx lime && conda clean -tipsy && source deactivate
+RUN bash -c $CONDA_ACTIVATE && conda install -c https://conda.anaconda.org/creditx lime && conda clean -tipsy && source deactivate
 
 # Install Python 2 kernel spec into the Python 3 conda environment which
 # runs the notebook server
