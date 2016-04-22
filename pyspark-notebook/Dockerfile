@@ -12,11 +12,9 @@ RUN apt-get -y update && apt-get -y install jq && apt-get clean && rm -rf /var/l
 # Spark dependencies
 ENV APACHE_SPARK_VERSION 1.6.0
 RUN apt-get -y update && \
-    apt-get install -y nodejs && \
     apt-get install -y --no-install-recommends openjdk-7-jre-headless && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-RUN npm install bower -g
 RUN cd /tmp && \
         wget -q http://d3kbcqa49mib13.cloudfront.net/spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6.tgz && \
         echo "439fe7793e0725492d3d36448adcd1db38f438dd1392bffd556b58bb9a3a2601 *spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6.tgz" | sha256sum -c - && \
