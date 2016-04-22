@@ -21,7 +21,7 @@ RUN apt-get update && \
     libnettle4 && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-USER jovyan
+USER creditx
 
 # R packages including IRKernel which gets installed globally.
 RUN conda config --add channels r && \
@@ -45,9 +45,9 @@ RUN conda config --add channels r && \
     'r-rcurl=1.95*' \
     'r-randomforest=4.6*' && conda clean -tipsy
 
-# Install IJulia packages as jovyan and then move the kernelspec out
+# Install IJulia packages as creditx and then move the kernelspec out
 # to the system share location. Avoids problems with runtime UID change not
-# taking effect properly on the .local folder in the jovyan home dir.
+# taking effect properly on the .local folder in the creditx home dir.
 RUN julia -e 'Pkg.add("IJulia")' && \
     mv /home/$NB_USER/.local/share/jupyter/kernels/* $CONDA_DIR/share/jupyter/kernels/ && \
     chmod -R go+rx $CONDA_DIR/share/jupyter && \

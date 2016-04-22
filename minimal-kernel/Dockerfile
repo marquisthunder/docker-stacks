@@ -24,10 +24,10 @@ urlretrieve("https://github.com/krallin/tini/releases/download/v0.6.0/tini", "ti
     chmod +x /usr/local/bin/tini
 
 # Configure environment
-ENV KG_USER jovyan
+ENV KG_USER creditx
 ENV KG_UID 1000
 
-# Create jovyan user with UID=1000
+# Create creditx user with UID=1000
 RUN useradd -m -s /bin/bash -N -u $KG_UID $KG_USER
 
 # Install modern pip then kernel gateway
@@ -50,5 +50,5 @@ WORKDIR /tmp
 ENTRYPOINT ["tini", "--"]
 CMD ["jupyter", "kernelgateway", "--KernelGatewayApp.ip=0.0.0.0"]
 
-# Run container as jovyan
-USER jovyan
+# Run container as creditx
+USER creditx

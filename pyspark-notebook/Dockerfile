@@ -12,9 +12,11 @@ RUN apt-get -y update && apt-get -y install jq && apt-get clean && rm -rf /var/l
 # Spark dependencies
 ENV APACHE_SPARK_VERSION 1.6.0
 RUN apt-get -y update && \
+    apt-get install -y nodejs && \
     apt-get install -y --no-install-recommends openjdk-7-jre-headless && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+RUN npm install bower -g
 RUN cd /tmp && \
         wget -q http://d3kbcqa49mib13.cloudfront.net/spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6.tgz && \
         echo "439fe7793e0725492d3d36448adcd1db38f438dd1392bffd556b58bb9a3a2601 *spark-${APACHE_SPARK_VERSION}-bin-hadoop2.6.tgz" | sha256sum -c - && \
@@ -42,7 +44,7 @@ ENV PYTHONPATH $SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.9-src.zip
 ENV MESOS_NATIVE_LIBRARY /usr/local/lib/libmesos.so
 ENV SPARK_OPTS --driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info
 
-USER weiyan
+USER creditx
 
 # Install Python 3 packages
 RUN conda install --quiet --yes \
@@ -53,7 +55,7 @@ RUN conda install --quiet --yes \
     'scipy=0.17*' \
     'seaborn=0.7*' \
     'scikit-learn=0.17*'
-RUN conda install -c https://conda.anaconda.org/weiyan lime && conda clean -tipsy
+RUN conda install -c https://conda.anaconda.org/creditx lime && conda clean -tipsy
 
 # Install Python 2 packages and kernel spec
 RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
@@ -66,7 +68,7 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
     'seaborn=0.7*' \
     'scikit-learn=0.17*' \
     pyzmq
-RUN source /opt/conda/bin/activate python2 && conda install -c https://conda.anaconda.org/weiyan lime && conda clean -tipsy && deactivate
+RUN source /opt/conda/bin/activate python2 && conda install -c https://conda.anaconda.org/creditx lime && conda clean -tipsy && deactivate
 
 # Install Python 2 kernel spec into the Python 3 conda environment which
 # runs the notebook server

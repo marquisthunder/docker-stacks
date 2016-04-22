@@ -47,26 +47,26 @@ RUN wget --quiet https://github.com/krallin/tini/releases/download/v0.9.0/tini &
 ENV CONDA_DIR /opt/conda
 ENV PATH $CONDA_DIR/bin:$PATH
 ENV SHELL /bin/bash
-ENV NB_USER jovyan
+ENV NB_USER creditx
 ENV NB_UID 1000
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
-# Create jovyan user with UID=1000 and in the 'users' group
+# Create creditx user with UID=1000 and in the 'users' group
 RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER && \
     mkdir -p /opt/conda && \
-    chown jovyan /opt/conda
+    chown creditx /opt/conda
 
-USER jovyan
+USER creditx
 
-# Setup jovyan home directory
+# Setup creditx home directory
 RUN mkdir /home/$NB_USER/work && \
     mkdir /home/$NB_USER/.jupyter && \
     mkdir /home/$NB_USER/.local && \
     echo "cacert=/etc/ssl/certs/ca-certificates.crt" > /home/$NB_USER/.curlrc
 
-# Install conda as jovyan
+# Install conda as creditx
 RUN cd /tmp && \
     mkdir -p $CONDA_DIR && \
     wget --quiet https://repo.continuum.io/miniconda/Miniconda3-3.19.0-Linux-x86_64.sh && \
@@ -76,7 +76,7 @@ RUN cd /tmp && \
     $CONDA_DIR/bin/conda install --quiet --yes conda==3.19.1 && \
     conda clean -tipsy
 
-# Install Jupyter notebook as jovyan
+# Install Jupyter notebook as creditx
 RUN conda install --quiet --yes \
     'notebook=4.1*' \
     terminado \
@@ -101,5 +101,5 @@ COPY start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
 RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter
 
-# Switch back to jovyan to avoid accidental container runs as root
-USER jovyan
+# Switch back to creditx to avoid accidental container runs as root
+USER creditx
