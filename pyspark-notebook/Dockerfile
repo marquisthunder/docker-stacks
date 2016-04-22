@@ -43,6 +43,8 @@ ENV MESOS_NATIVE_LIBRARY /usr/local/lib/libmesos.so
 ENV SPARK_OPTS --driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info
 
 USER creditx
+ENV CONDA_ENV_PATH /opt/conda
+ENV CONDA_ACTIVATE "source $CONDA_ENV_PATH/bin/activate $CONDA_ENV_PATH/envs/python2"
 
 # Install Python 3 packages
 RUN conda install --quiet --yes \
@@ -66,8 +68,7 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
     'seaborn=0.7*' \
     'scikit-learn=0.17*' \
     pyzmq
-RUN source /opt/conda/bin/activate /opt/conda/envs/python2
-RUN conda install -c https://conda.anaconda.org/creditx lime && conda clean -tipsy && source deactivate
+RUN $CONDA_ACTIVATE && conda install -c https://conda.anaconda.org/creditx lime && conda clean -tipsy && source deactivate
 
 # Install Python 2 kernel spec into the Python 3 conda environment which
 # runs the notebook server
