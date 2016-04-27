@@ -48,7 +48,7 @@ ENV CONDA_ACTIVATE "source $CONDA_ENV_PATH/bin/activate $CONDA_ENV_PATH/envs/pyt
 
 # Install Python 3 packages
 RUN conda install --quiet --yes \
-    'ipywidgets=5.0*' \
+    'ipython=4.2*' \
     'pandas=0.18*' \
     'numexpr=2.5*' \
     'matplotlib=1.5*' \
@@ -56,12 +56,11 @@ RUN conda install --quiet --yes \
     'seaborn=0.7*' \
     'seaborn=0.7*' \
     'scikit-learn=0.17*'
-RUN conda install -c https://conda.anaconda.org/creditx lime && conda clean -tipsy
+RUN conda install -c https://conda.anaconda.org/creditx lime ipywidgets && conda clean -tipsy
 
 # Install Python 2 packages and kernel spec
 RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
     'ipython=4.2*' \
-    'ipywidgets=5.0*' \
     'pandas=0.18*' \
     'numexpr=2.5*' \
     'matplotlib=1.5*' \
@@ -73,7 +72,7 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
 # Install Python 2 kernel spec into the Python 3 conda environment which
 # runs the notebook server
 RUN bash -c '. activate python2 && \
-    conda install -c https://conda.anaconda.org/creditx lime && \
+    conda install -c https://conda.anaconda.org/creditx lime ipywidgets && \
     python -m ipykernel.kernelspec --prefix=$CONDA_DIR && \
     . deactivate'
 # Set PYSPARK_HOME in the python2 spec
