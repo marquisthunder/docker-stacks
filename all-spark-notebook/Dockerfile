@@ -21,7 +21,7 @@ USER creditx
 
 # R packages
 RUN conda config --add channels r && \
-    r r-irkernel r-recommended r-essentials r-devtools && \
+    conda install r r-irkernel r-recommended r-essentials r-devtools && \
     conda clean -tipsy
 
 # Apache Toree kernel
