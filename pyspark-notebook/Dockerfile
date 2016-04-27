@@ -48,11 +48,12 @@ ENV CONDA_ACTIVATE "source $CONDA_ENV_PATH/bin/activate $CONDA_ENV_PATH/envs/pyt
 
 # Install Python 3 packages
 RUN conda install --quiet --yes \
-    'ipywidgets=4.1*' \
+    'ipywidgets=5.0*' \
     'pandas=0.18*' \
     'numexpr=2.5*' \
     'matplotlib=1.5*' \
     'scipy=0.17*' \
+    'seaborn=0.7*' \
     'seaborn=0.7*' \
     'scikit-learn=0.17*'
 RUN conda install -c https://conda.anaconda.org/creditx lime && conda clean -tipsy
@@ -60,7 +61,7 @@ RUN conda install -c https://conda.anaconda.org/creditx lime && conda clean -tip
 # Install Python 2 packages and kernel spec
 RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
     'ipython=4.2*' \
-    'ipywidgets=4.1*' \
+    'ipywidgets=5.0*' \
     'pandas=0.18*' \
     'numexpr=2.5*' \
     'matplotlib=1.5*' \
