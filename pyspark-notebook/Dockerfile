@@ -54,8 +54,8 @@ RUN conda install --quiet --yes \
     'scipy=0.17*' \
     'seaborn=0.7*' \
     'scikit-learn=0.17*'
-RUN conda config --add channels conda-forge && conda install jupyter_core jupyter_console jupyter_client widgetsnbextension
-RUN conda install -c https://conda.anaconda.org/creditx ipywidgets=5.1.2 lime && conda clean -tipsy
+RUN conda config --add channels conda-forge && conda install jupyter_core jupyter_console jupyter_client 
+RUN conda install -c https://conda.anaconda.org/creditx xgboost scandir jupyter_cms lime && conda clean -tipsy
 
 # Install Python 2 packages and kernel spec
 RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
@@ -71,8 +71,8 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
 # runs the notebook server
 RUN bash -c '. activate python2 && \
     conda config --add channels conda-forge && \
-    conda install jupyter_core jupyter_console jupyter_client widgetsnbextension && \
-    conda install -c https://conda.anaconda.org/creditx ipywidgets=5.1.2 lime && \
+    conda install jupyter_core jupyter_console jupyter_client && \
+    conda install -c https://conda.anaconda.org/creditx xgboost scandir jupyter_cms lime && \
     python -m ipykernel.kernelspec --prefix=$CONDA_DIR && \
     . deactivate'
 # Set PYSPARK_HOME in the python2 spec
