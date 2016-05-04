@@ -74,7 +74,7 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
 RUN bash -c '. activate python2 && \
     conda config --add channels conda-forge && \
     conda config --add channels creditx && \
-    conda install --quiet --yes jupyter_core jupyter_console jupyter_client && \
+    conda install --quiet --yes jupyter_core jupyter_console jupyter_client \
                                 xgboost scandir jupyter_cms jupyter_dashboard_bundles widgetsnbextension ipywidgets lime && \
     python -m ipykernel.kernelspec --prefix=$CONDA_DIR && \
     . deactivate'
