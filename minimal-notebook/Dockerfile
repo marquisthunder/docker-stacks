@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     git \
     vim \
     jed \
+    emacs \
     curl \
     wget \
     build-essential \
@@ -74,6 +75,7 @@ RUN cd /tmp && \
     /bin/bash Miniconda3-4.0.5-Linux-x86_64.sh -f -b -p $CONDA_DIR && \
     rm Miniconda3-4.0.5-Linux-x86_64.sh && \
     $CONDA_DIR/bin/conda install --quiet --yes conda==4.0.5 && \
+    $CONDA_DIR/bin/conda config --system --add channels conda-forge && \
     conda clean -tipsy
 
 # Install Jupyter notebook as creditx
