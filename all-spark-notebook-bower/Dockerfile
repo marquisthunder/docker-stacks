@@ -7,6 +7,7 @@ MAINTAINER Jupyter Project <jupyter@googlegroups.com>
 USER root
 
 RUN curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash - && \
+    apt-get update && \
     apt-get install --yes nodejs npm && \
     npm update -g npm && \
     npm install -g bower
