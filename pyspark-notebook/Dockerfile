@@ -32,7 +32,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     CODENAME=wheezy && \
     echo "deb http://repos.mesosphere.io/${DISTRO} ${CODENAME} main" > /etc/apt/sources.list.d/mesosphere.list && \
     apt-get -y update && \
-    apt-get --no-install-recommends -y --force-yes install mesos=0.22.1-1.0.debian78 && \
+    apt-get --no-install-recommends -y --force-yes install curl mesos=0.22.1-1.0.debian78 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -54,12 +54,13 @@ RUN conda install --quiet --yes \
     'scipy=0.17*' \
     'seaborn=0.7*' \
     'scikit-learn=0.17*'
-RUN conda install -c conda-forge jupyter_core jupyter_console jupyter_client  && \
-    conda install -c creditx xgboost scandir jupyter_cms jupyter_dashboards_bundlers widgetsnbextension ipywidgets lime && \
+RUN conda install --quiet --yes -c conda-forge jupyter_core jupyter_console jupyter_client  && \
+    conda install --quiet --yes -c creditx xgboost scandir jupyter_cms jupyter_dashboards_bundlers widgetsnbextension ipywidgets lime && \
     conda clean -tipsy
 
 # Install Python 2 packages and kernel spec
 RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
+    'conda-build' \
     'pandas=0.18*' \
     'numexpr=2.5*' \
     'matplotlib=1.5*' \
