@@ -74,7 +74,7 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
 RUN bash -c '. activate python2 && \
     conda install --quiet --yes -c conda-forge jupyter_core jupyter_console jupyter_client &&\
     conda install --quiet --yes -c creditx xgboost scandir jupyter_cms jupyter_dashboards_bundlers widgetsnbextension ipywidgets lime && \
-    python -m ipykernel.kernelspec --prefix=$CONDA_DIR && \
+    python -m ipykernel.kernelspec --prefix=$CONDA_DIR/envs/python2 && \
     . deactivate'
 # Set PYSPARK_HOME in the python2 spec
 RUN jq --arg v "$CONDA_DIR/envs/python2/bin/python" \
