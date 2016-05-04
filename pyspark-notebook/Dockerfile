@@ -56,7 +56,7 @@ RUN conda install --quiet --yes \
     'scikit-learn=0.17*'
 RUN conda config --add channels conda-forge && \
     conda config --add channels creditx && \
-    conda install jupyter_core jupyter_console jupyter_client xgboost scandir jupyter_cms widgetsnbextension ipywidgets lime && \
+    conda install jupyter_core jupyter_console jupyter_client xgboost scandir jupyter_cms jupyter_dashboards_bundles widgetsnbextension ipywidgets lime && \
     conda clean -tipsy
 
 # Install Python 2 packages and kernel spec
@@ -75,7 +75,7 @@ RUN bash -c '. activate python2 && \
     conda config --add channels conda-forge && \
     conda config --add channels creditx && \
     conda install --quiet --yes jupyter_core jupyter_console jupyter_client \
-                                xgboost scandir jupyter_cms jupyter_dashboard_bundles widgetsnbextension ipywidgets lime && \
+                                xgboost scandir jupyter_cms jupyter_dashboards_bundles widgetsnbextension ipywidgets lime && \
     python -m ipykernel.kernelspec --prefix=$CONDA_DIR && \
     . deactivate'
 # Set PYSPARK_HOME in the python2 spec
