@@ -75,7 +75,7 @@ RUN bash -c '. activate python2 && \
     conda config --add channels conda-forge && \
     conda config --add channels creditx && \
     conda install --quiet --yes jupyter_core jupyter_console jupyter_client && \
-                                xgboost scandir jupyter_cms widgetsnbextension ipywidgets lime && \
+                                xgboost scandir jupyter_cms jupyter_dashboard_bundles widgetsnbextension ipywidgets lime && \
     python -m ipykernel.kernelspec --prefix=$CONDA_DIR && \
     . deactivate'
 # Set PYSPARK_HOME in the python2 spec
