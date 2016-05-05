@@ -1,6 +1,6 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
-FROM daocloud.io/creditx/all-spark-notebook
+FROM daocloud.io/creditx/all-spark-notebook:latest
 
 MAINTAINER Jupyter Project <jupyter@googlegroups.com>
 
