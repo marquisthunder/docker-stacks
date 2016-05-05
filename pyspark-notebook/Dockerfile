@@ -48,6 +48,7 @@ ENV CONDA_ACTIVATE "source $CONDA_ENV_PATH/bin/activate $CONDA_ENV_PATH/envs/pyt
 
 # Install Python 3 packages
 RUN conda install --quiet --yes \
+    'whoosh=2.7*' \
     'conda-build' \
     'pandas=0.18*' \
     'numexpr=2.5*' \
@@ -61,6 +62,7 @@ RUN conda install --quiet --yes -c conda-forge jupyter_core jupyter_console jupy
 
 # Install Python 2 packages and kernel spec
 RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
+    'whoosh=2.7*' \
     'pandas=0.18*' \
     'numexpr=2.5*' \
     'matplotlib=1.5*' \
