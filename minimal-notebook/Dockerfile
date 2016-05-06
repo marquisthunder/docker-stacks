@@ -80,8 +80,8 @@ RUN cd /tmp && \
 
 # Install Jupyter notebook as creditx
 RUN conda install --quiet --yes \
-    'notebook=4.2*' \
-    terminado \
+    -c creditx 'notebook=4.2*' \
+	       terminado \
     && conda clean -tipsy
 
 # Install JupyterHub to get the jupyterhub-singleuser startup script
