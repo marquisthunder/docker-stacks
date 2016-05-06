@@ -36,7 +36,7 @@ RUN apt-get update && \
         build-essential \
         python3-dev && \
     easy_install3 pip && \
-    pip install jupyter_kernel_gateway==0.3.1 && \
+    pip install jupyter_kernel_gateway==0.5.1 && \
     apt-get remove --purge -y \
         build-essential \
         python3-dev && \
