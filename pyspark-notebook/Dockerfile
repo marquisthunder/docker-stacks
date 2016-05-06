@@ -56,7 +56,7 @@ RUN conda install --quiet --yes \
     'scipy=0.17*' \
     'seaborn=0.7*' \
     'scikit-learn=0.17*'
-RUN conda install --quiet --yes --force -c conda-forge jupyter_core jupyter_console jupyter_client && \
+RUN conda install --quiet --yes --force -c conda-forge ipykernel jupyter_core jupyter_console jupyter_client && \
     conda install --quiet --yes --force -c creditx notebook xgboost scandir jupyter_cms widgetsnbextension ipywidgets lime && \
     conda clean -tipsy
 
@@ -74,7 +74,7 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
 # Install Python 2 kernel spec into the Python 3 conda environment which
 # runs the notebook server
 RUN bash -c '. activate python2 && \
-    conda install --quiet --yes --force -c conda-forge jupyter_core jupyter_console jupyter_client &&\
+    conda install --quiet --yes --force -c conda-forge ipykernel jupyter_core jupyter_console jupyter_client &&\
     conda install --quiet --yes --force -c creditx notebook xgboost scandir jupyter_cms widgetsnbextension ipywidgets lime && \
     python -m ipykernel.kernelspec --prefix=$CONDA_DIR && \
     . deactivate'
