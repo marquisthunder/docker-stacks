@@ -58,7 +58,7 @@ RUN conda install --quiet --yes \
     'seaborn=0.7*' \
     'scikit-learn=0.17*'
 RUN conda install --quiet --yes --force -c conda-forge ipykernel jupyter_core jupyter_console jupyter_client && \
-    conda install --quiet --yes --force -c creditx notebook jwidgetsnbextension ipywidgets scandir jupyter_cms xgboost lime && \
+    conda install --quiet --yes --force -c creditx notebook widgetsnbextension ipywidgets scandir jupyter_cms xgboost lime && \
     conda install --quiet --yes --force -c anaconda-nb-extensions nb_conda nb_conda_kernels nbpresent && \
     conda clean -tipsy
 
