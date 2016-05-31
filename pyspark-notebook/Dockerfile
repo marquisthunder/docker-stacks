@@ -78,7 +78,7 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
 # runs the notebook server
 RUN bash -c '. activate python2 && \
     conda install --quiet --yes --force -c conda-forge ipykernel jupyter_core jupyter_console jupyter_client && \
-    conda install --quiet --yes --force -c creditx notebook widgetsnbextension ipywidgets scandir jupyter_cms xgboost lime && \
+    conda install --quiet --yes --force -c creditx notebook widgetsnbextension ipywidgets scandir jupyter_cms xgboost "tensorflow=0.8*"  lime && \
     conda install --quiet --yes --force -c anaconda-nb-extensions nb_conda nb_conda_kernels nbpresent && \
     python -m ipykernel.kernelspec --prefix=$CONDA_DIR && \
     . deactivate'
