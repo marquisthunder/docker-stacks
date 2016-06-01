@@ -25,5 +25,5 @@ RUN conda config --add channels r && \
     conda clean -tipsy
 
 # Apache Toree kernel
-RUN pip install toree==0.1.0.dev7
+RUN pip --no-cache-dir install toree==0.1.0.dev7
 RUN jupyter toree install --user

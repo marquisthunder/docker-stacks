@@ -25,7 +25,7 @@ If this is your first time using Docker or any of the Jupyter projects, do the f
 
 Here's a diagram of the `FROM` relationships between all of the images defined in this project:
 
-[![Image inheritance diagram](internal/inherit-diagram.png)](http://interactive.blockdiag.com/?compression=deflate&src=eJyFzDELwjAQhuG9vyJ0trtYKnZzdxSRS3OVM9dcSOJQxf9u41BoEVzf77nTLJ01BDf1KpSSQOgSJBKnGuUlpACU6mkx2MOD07UXlyI9cZq3ubfqzKCRm9KgJnC7O8ZIeDgd2_JSF19R7dVAjgbgyklCLWI3c7EYHHJ-tTb5Lnbkx7lktSzZGEgwVXQdLuSvf-Gv8GP0EOzCrVt2wFyt5fsDQc9zBA)
+[![Image inheritance diagram](internal/inherit-diagram.png)](http://interactive.blockdiag.com/?compression=deflate&src=eJyFzLEOwjAMRdGdr7C6d0dURXRjZ0QIOY2LTNM4SsxQEP9Ow5YuXe87tnHSj5bxAZ8dgEQmr6gsHloIEjUia7MslgZ8Ob0P4jXxm5Z5n3sHV4eGXFtZMoz-8KSUmE6Xc1fdmt1f1EcwmKj2omRExnxXhCwm9jyhK9C6ZZd6DnOhypKNRcWlku9p81_cFGFOAeNYuHXLDp2r1_L7A-hzeKU)
 
 ## Stacks, Tags, Versioning, and Progress
 
@@ -67,7 +67,7 @@ When `make release-all` successfully pushes the last of its images to Docker Hub
 
 **When there's a security fix in the Debian base image, do the following in place of the last command:**
 
-Update the `debian:jessie` SHA in the most-base images (e.g., minimal-notebook, minimal-kernel). Submit it as a regular PR and go through the build process.
+Update the `debian:jessie` SHA in the most-base images (e.g., base-notebook). Submit it as a regular PR and go through the build process.
 
 This will take time as the entire set of stacks will rebuild.
 
