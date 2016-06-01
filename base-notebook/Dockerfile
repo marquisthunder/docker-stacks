@@ -70,7 +70,7 @@ RUN conda install --quiet --yes \
     && conda clean -tipsy
 
 # Install JupyterHub to get the jupyterhub-singleuser startup script
-RUN pip --no-cache-dir install 'jupyterhub==0.61'
+RUN pip --no-cache-dir install 'jupyterhub==0.6.1'
 
 USER root
 
