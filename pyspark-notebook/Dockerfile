@@ -72,6 +72,7 @@ RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
     'matplotlib=1.5*' \
     'scipy=0.17*' \
     'seaborn=0.7*' \
+    'jupyter=1.0*' \
     'scikit-learn=0.17*' \
     && conda clean -tipsy
 # Add shortcuts to distinguish pip for python2 and python3 envs
