@@ -79,9 +79,9 @@ RUN ln -s $CONDA_DIR/envs/python2/bin/pip $CONDA_DIR/bin/pip2 && \
 
 # Install Python 2 kernel spec into the Python 3 conda environment which
 # runs the notebook server
-RUN bash -c '. activate python2 && \
-    conda install --quiet --yes --force -c conda-forge ipykernel jupyter_core jupyter_console jupyter_client && \
-    conda install --quiet --yes --force -c creditx notebook widgetsnbextension ipywidgets scandir jupyter_cms xgboost "tensorflow=0.8*"  lime && \
+RUN bash -c 'source activate python2 && \
+    conda install --quiet --yes --force -c conda-forge ipykernel jupyter_core jupyter_console jupyter_client widgetsnbextension ipywidgets && \
+    conda install --quiet --yes --force -c creditx notebook scandir jupyter_cms xgboost "tensorflow=0.8*" lime && \
     conda install --quiet --yes --force -c anaconda-nb-extensions nb_conda nb_conda_kernels nbpresent && \
     python -m ipykernel.kernelspec --prefix=$CONDA_DIR && \
     . deactivate'
