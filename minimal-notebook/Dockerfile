@@ -13,8 +13,6 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     vim \
     jed \
     emacs \
-    curl \
-    wget \
     build-essential \
     python-dev \
     unzip \
