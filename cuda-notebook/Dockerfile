@@ -12,6 +12,7 @@ USER root
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     git \
+    wget \
     build-essential \
     python-dev \
     ca-certificates \
