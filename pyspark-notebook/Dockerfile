@@ -6,9 +6,6 @@ MAINTAINER Jupyter Project <jupyter@googlegroups.com>
 
 USER root
 
-# Util to help with kernel spec later
-RUN apt-get -y update && apt-get -y install jq && apt-get clean && rm -rf /var/lib/apt/lists/*
-
 # Spark dependencies
 ENV APACHE_SPARK_VERSION 1.6.1
 RUN apt-get -y update && \
@@ -62,6 +59,9 @@ RUN conda install --quiet --yes --force -c conda-forge ipykernel jupyter_core ju
     conda install --quiet --yes --force -c creditx notebook=4.2.5 scandir jupyter_cms xgboost lime && \
     conda install --quiet --yes --force -c anaconda-nb-extensions nb_conda nb_conda_kernels nbpresent && \
     conda clean -tipsy
+
+# Activate ipywidgets extension in the environment that runs the notebook server
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix
 
 # Install Python 2 packages and kernel spec
 RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 \
